@@ -1,0 +1,106 @@
+diff -Nur dc_gui2-0.68.orig/src/bookmark.c dc_gui2-0.68.chng/src/bookmark.c
+--- dc_gui2-0.68.orig/src/bookmark.c	Wed Jan  1 15:29:29 2003
++++ dc_gui2-0.68.chng/src/bookmark.c	Wed Jan  8 14:16:48 2003
+@@ -130,7 +130,9 @@
+ 	GtkListStore *gls;
+ 	GtkTreeModel *gtm;
+ 	int nb_entry;
+-	SORT_VARS()
++	gboolean __sort_valid;
++	gint __sort_col;
++	GtkSortType __sort_order;
+ 	
+ 	w=get_widget_by_widget_name(main_window,"hub_favorite_clist");
+ 	if(w==NULL)
+diff -Nur dc_gui2-0.68.orig/src/dctc_process.c dc_gui2-0.68.chng/src/dctc_process.c
+--- dc_gui2-0.68.orig/src/dctc_process.c	Sat Jan  4 17:43:11 2003
++++ dc_gui2-0.68.chng/src/dctc_process.c	Wed Jan  8 14:16:38 2003
+@@ -618,7 +618,9 @@
+ 	GtkListStore *gls;
+ 	int i;
+ 	GString *ui;
+-	SORT_VARS()
++	gboolean __sort_valid;
++	gint __sort_col;
++	GtkSortType __sort_order;
+ 
+ 	user_lst_mode=1;		/* the list is completed */
+ 	if(gpa_user_lst==NULL)
+@@ -3445,7 +3447,9 @@
+ 	GtkTreeModel *gtm;
+ 	GtkTreeIter iter;
+ 	GtkListStore *gls;
+-	SORT_VARS()
++	gboolean __sort_valid;
++	gint __sort_col;
++	GtkSortType __sort_order;
+ 
+ 	if(ualst_temp_array==NULL)
+ 		return;
+@@ -4557,7 +4561,9 @@
+ 	GtkWidget *w;
+ 	GtkTreeModel *gtm;
+ 	GtkTreeStore *gts;
+-	SORT_VARS()
++	gboolean __sort_valid;
++	gint __sort_col;
++	GtkSortType __sort_order;
+ 
+ 	int i;
+ 	int gdl_displaying;
+diff -Nur dc_gui2-0.68.orig/src/public_hub_clist.c dc_gui2-0.68.chng/src/public_hub_clist.c
+--- dc_gui2-0.68.orig/src/public_hub_clist.c	Wed Jan  1 15:23:42 2003
++++ dc_gui2-0.68.chng/src/public_hub_clist.c	Wed Jan  8 14:24:23 2003
+@@ -164,7 +164,9 @@
+ 	GPtrArray *gpa=NULL;
+ 	GStringChunk *gsc=NULL;
+ 	int i;
+-	SORT_VARS()
++	gboolean __sort_valid;
++	gint __sort_col;
++	GtkSortType __sort_order;
+ 
+ 	char buf[1024+1];
+ 
+diff -Nur dc_gui2-0.68.orig/src/recent_hub_clist.c dc_gui2-0.68.chng/src/recent_hub_clist.c
+--- dc_gui2-0.68.orig/src/recent_hub_clist.c	Wed Jan  1 15:24:57 2003
++++ dc_gui2-0.68.chng/src/recent_hub_clist.c	Wed Jan  8 14:24:31 2003
+@@ -46,7 +46,9 @@
+ 	if(f!=NULL)
+ 	{
+ 		char buf[51200];
+-		SORT_VARS()
++		gboolean __sort_valid;
++		gint __sort_col;
++		GtkSortType __sort_order;
+ 
+ 		SORT_SAVE(,gtm,REHC_DUMMY)
+ 		while(fgets(buf,sizeof(buf),f)!=NULL)
+diff -Nur dc_gui2-0.68.orig/src/seen_hub_clist.c dc_gui2-0.68.chng/src/seen_hub_clist.c
+--- dc_gui2-0.68.orig/src/seen_hub_clist.c	Wed Jan  1 15:26:12 2003
++++ dc_gui2-0.68.chng/src/seen_hub_clist.c	Wed Jan  8 14:24:35 2003
+@@ -65,7 +65,9 @@
+ 	GtkTreeIter iter;
+ 	DBC *cursor;
+ 	int ret;
+-	SORT_VARS()
++	gboolean __sort_valid;
++	gint __sort_col;
++	GtkSortType __sort_order;
+ 
+ 	w=get_widget_by_widget_name(main_window,"seen_hub_clist");
+ 	if(w==NULL)
+diff -Nur dc_gui2-0.68.orig/src/user_file_list_clist.c dc_gui2-0.68.chng/src/user_file_list_clist.c
+--- dc_gui2-0.68.orig/src/user_file_list_clist.c	Wed Jan  1 16:29:27 2003
++++ dc_gui2-0.68.chng/src/user_file_list_clist.c	Wed Jan  8 14:20:40 2003
+@@ -377,7 +377,9 @@
+ 	unsigned long list_byte_size;
+ 	GtkTreeIter *root_node_iter;
+ 	GtkTreeIter *last_inserted_iter;
+-	SORT_VARS()
++	gboolean __sort_valid;
++	gint __sort_col;
++	GtkSortType __sort_order;
+ 
+ 	w=get_widget_by_widget_name(main_window,"user_file_list_clist");
+ 	if(w==NULL)
