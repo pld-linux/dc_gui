@@ -2,11 +2,12 @@ Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
 Version:	0.57
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
+Patch0:		%{name}-home_etc.patch
 URL:		http://ac2i.tzo.com/dctc/
 BuildRequires:	db3-devel
 BuildRequires:	dctc >= 0.82
@@ -30,6 +31,7 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 rm -f missing
