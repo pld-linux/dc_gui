@@ -1,4 +1,5 @@
 Summary:	GUI for dctc
+Summary(pl):	GUI do dctc
 Name:		dc_gui
 Version:	0.33
 Release:	1
@@ -7,18 +8,21 @@ Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
+URL:		http://ac2i.tzo.com/dctc/
 Requires:	dctc >= 0.59
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-libs-devel
 BuildRequires:	gtk+-devel >= 1.2.0
-URL:		http://ac2i.tzo.com/dctc/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 
 %description
-dctc GUI
+dctc GUI.
+
+%description -l pl
+Graficzny interfejs u¿ytkownika do dctc.
 
 %prep
 %setup -q
