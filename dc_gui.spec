@@ -2,12 +2,13 @@ Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
 Version:	0.80
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ac2i.homelinux.com/dctc/%{name}2-%{version}.tar.gz
 # Source0-md5:	3ccdc2796f3ab8e73d0405c4afccf22b
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://ac2i.homelinux.com/dctc/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -29,6 +30,7 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 %prep
 %setup -q -n %{name}2-%{version}
 #%patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
