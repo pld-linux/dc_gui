@@ -1,13 +1,13 @@
 Summary:	GUI for dctc
 Name:		dc_gui
-Version:	0.32
+Version:	0.33
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
-Requires:	dctc >= 0.58
+Requires:	dctc >= 0.59
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-libs-devel
