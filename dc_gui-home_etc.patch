@@ -1,96 +1,53 @@
-diff -Nur dc_gui-0.57.orig/src/callbacks.c dc_gui-0.57.chng/src/callbacks.c
---- dc_gui-0.57.orig/src/callbacks.c	Sat May 25 10:51:21 2002
-+++ dc_gui-0.57.chng/src/callbacks.c	Mon Jun  3 10:57:40 2002
-@@ -2894,14 +2894,21 @@
- on_clear_recent_list_button_clicked    (GtkButton       *button,
-                                         gpointer         user_data)
- {
--	GString *s;
- 	char *path;
+diff -Nur dc_gui2-0.68.orig/src/callbacks.c dc_gui2-0.68.chng/src/callbacks.c
+--- dc_gui2-0.68.orig/src/callbacks.c	Sat Jan  4 08:24:38 2003
++++ dc_gui2-0.68.chng/src/callbacks.c	Wed Jan  8 13:54:11 2003
+@@ -560,7 +560,11 @@
  
--	s=g_string_new(NULL);
--	path=getenv("HOME");
+ 	s=g_string_new(NULL);
+ 	path=getenv("HOME");
 -	g_string_sprintf(s,"%s/.dctc/recent",(path!=NULL)?path:".");
--	unlink(s->str);
--	g_string_free(s,TRUE);
-+	path = getenv("HOME");	
-+	if (!path)
-+	    path = ".";
-+
-+	if(getenv("CONFIG_DIR"))
-+	    path = g_strconcat(path, "/", getenv("CONFIG_DIR"), 
-+		"/dctc/recent", NULL);
++	if (getenv("CONFIG_DIR"))
++		g_string_sprintf(s, "%s/%s/dctc/recent",
++		    (path!=NULL)?path:".", getenv("CONFIG_DIR"));
 +	else
-+	    path = g_strconcat(path, "/.dctc/recent", NULL);
-+
-+	unlink(path);	
-+	g_free(path);
-+
++		g_string_sprintf(s, "%s/.dctc/recent", (path!=NULL)?path:".");
+ 	unlink(s->str);
+ 	g_string_free(s,TRUE);
  	fill_recent_hub_clist();
- }
- 
-diff -Nur dc_gui-0.57.orig/src/init_fnc.c dc_gui-0.57.chng/src/init_fnc.c
---- dc_gui-0.57.orig/src/init_fnc.c	Sat May 25 11:01:34 2002
-+++ dc_gui-0.57.chng/src/init_fnc.c	Mon Jun  3 11:01:10 2002
-@@ -341,19 +341,25 @@
- 	if(rhcw)
- 	{
- 		FILE *f;
--		GString *s;
- 		char *path;
- 
- 		gtk_clist_freeze(GTK_CLIST(rhcw));
- 		gtk_clist_clear(GTK_CLIST(rhcw));
- 		gtk_clist_set_auto_sort(GTK_CLIST(rhcw),TRUE);
- 
--		s=g_string_new(NULL);
--		path=getenv("HOME");
--		g_string_sprintf(s,"%s/.dctc/recent",(path!=NULL)?path:".");
-+		path = getenv("HOME");
-+		if (!path)
-+		    path = ".";
-+
-+	    	if(getenv("CONFIG_DIR"))
-+		    path = g_strconcat(path, "/", getenv("CONFIG_DIR"), 
-+			"/dctc/recent", NULL);
-+		else
-+		    path = g_strconcat(path, "/.dctc/recent", NULL);
- 
- 		/* we read the file ~/.dctc/recent */
--		f=fopen(s->str,"rb");
-+		f=fopen(path, "rb");
-+		g_free(path);
- 		if(f!=NULL)
- 		{
- 			char *ent[4];
-@@ -412,7 +418,6 @@
- 
- 			fclose(f);
- 		}
--		g_string_free(s,TRUE);
- 		gtk_clist_sort(GTK_CLIST(rhcw));
- 		gtk_clist_thaw(GTK_CLIST(rhcw));
- 	}
-diff -Nur dc_gui-0.57.orig/src/main.c dc_gui-0.57.chng/src/main.c
---- dc_gui-0.57.orig/src/main.c	Sat May 18 15:11:19 2002
-+++ dc_gui-0.57.chng/src/main.c	Mon Jun  3 11:02:54 2002
-@@ -265,8 +265,17 @@
+diff -Nur dc_gui2-0.68.orig/src/main.c dc_gui2-0.68.chng/src/main.c
+--- dc_gui2-0.68.orig/src/main.c	Sat Jan  4 08:25:04 2003
++++ dc_gui2-0.68.chng/src/main.c	Wed Jan  8 13:50:39 2003
+@@ -410,9 +410,14 @@
+   textdomain (GETTEXT_PACKAGE);
  #endif
  
- 	path=getenv("HOME");
+-	path=getenv("HOME");
 -	dctc_main_dir=g_string_new(NULL);
 -	g_string_sprintf(dctc_main_dir,"%s/.dctc",(path!=NULL)?path:".");
-+	if (!path)
-+	    path = ".";
-+
-+	if(getenv("CONFIG_DIR"))
-+	    path = g_strconcat(path, "/", getenv("CONFIG_DIR"), 
-+		"/dctc", NULL);
++	path = getenv("HOME");
++	dctc_main_dir = g_string_new(NULL);
++	if (getenv("CONFIG_DIR"))
++		g_string_sprintf(dctc_main_dir, "%s/%s/dctc",
++		    (path!=NULL)?path:".", getenv("CONFIG_DIR"));
 +	else
-+	    path = g_strconcat(path, "/.dctc", NULL);
-+	
-+	dctc_main_dir=g_string_new(path);
-+	g_free(path);
++		g_string_sprintf(dctc_main_dir, "%s/.dctc", (path!=NULL)?path:".");
++
  	if(access(dctc_main_dir->str,R_OK|W_OK|X_OK))
  	{
  		if(errno==ENOENT)
+diff -Nur dc_gui2-0.68.orig/src/recent_hub_clist.c dc_gui2-0.68.chng/src/recent_hub_clist.c
+--- dc_gui2-0.68.orig/src/recent_hub_clist.c	Wed Jan  1 15:24:57 2003
++++ dc_gui2-0.68.chng/src/recent_hub_clist.c	Wed Jan  8 13:57:01 2003
+@@ -46,7 +46,11 @@
+ 
+ 	s=g_string_new(NULL);
+ 	path=getenv("HOME");
+-	g_string_sprintf(s,"%s/.dctc/recent",(path!=NULL)?path:".");
++	if(getenv("CONFIG_DIR"))
++		g_string_sprintf(s, "%s/%s/dctc/recent",
++		    (path!=NULL)?path:".", getenv("CONFIG_DIR"));
++	else
++		g_string_sprintf(s, "%s/.dctc/recent",(path!=NULL)?path:".");
+ 
+ 	/* we read the file ~/.dctc/recent */
+ 	f=fopen(s->str,"rb");
