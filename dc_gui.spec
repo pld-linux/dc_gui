@@ -1,19 +1,19 @@
 Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.39
+Version:	0.40
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
-Patch0:		%{name}-DESTDIR.patch
 URL:		http://ac2i.tzo.com/dctc/
-Requires:	dctc >= 0.65
+Requires:	dctc >= 0.66
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-libs-devel
+BuildRequires:	gettext-devel
 BuildRequires:	gtk+-devel >= 1.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,10 +27,10 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -f missing
+gettextize --copy --force
 aclocal -I %{_aclocaldir}/gnome
 autoconf
 automake -a -c
