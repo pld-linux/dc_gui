@@ -1,16 +1,16 @@
 Summary:	GUI for dctc
 Name:		dc_gui
-Version:	0.31
+Version:	0.32
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
-Source0:	%{name}-%{version}.tar.gz
+Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 Requires:	dctc >= 0.98
 BuildRequires:	autoconf
 BuildRequires:	automake
-URL:		http://ac2i.tzo.com/dcdt
+URL:		http://ac2i.tzo.com/dctc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
