@@ -20,8 +20,6 @@ BuildRequires:	imlib-devel
 Requires:	dctc >= 0.83.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 Direct Connect client (dctc) GUI.
