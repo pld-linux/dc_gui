@@ -28,7 +28,7 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 
 %prep
 %setup -q -n %{name}2-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 rm -f missing
