@@ -1,7 +1,7 @@
 Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.43
+Version:	0.45
 Release:	1
 License:	GPL
 Group:		Applications/Communications
