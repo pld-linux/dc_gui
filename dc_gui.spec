@@ -2,14 +2,14 @@ Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
 Version:	0.69
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ac2i.tzo.com/dctc/%{name}2-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
 URL:		http://ac2i.tzo.com/dctc/
-BuildRequires:	db3-devel
+BuildRequires:	db-devel
 BuildRequires:	dctc >= 0.83.7
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -17,9 +17,9 @@ BuildRequires:	gnome-libs-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	imlib-devel
+BuildRequires:	libgnomeui-devel
 Requires:	dctc >= 0.83.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 Direct Connect client (dctc) GUI.
