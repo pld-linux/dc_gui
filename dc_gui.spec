@@ -35,8 +35,8 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 rm -f missing
 gettextize --copy --force
 aclocal -I %{_aclocaldir}/gnome
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure
 %{__make}
 
