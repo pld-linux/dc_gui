@@ -8,15 +8,15 @@ Group:		X11/Applications/Networking
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 URL:		http://ac2i.tzo.com/dctc/
-Requires:	dctc >= 0.79
 BuildRequires:	db3-devel
-BuildRequires:	dctc
+BuildRequires:	dctc >= 0.79
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-libs-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+-devel >= 1.2.0
 BuildRequires:	imlib-devel
+Requires:	dctc >= 0.79
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
