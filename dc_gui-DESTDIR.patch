@@ -1,0 +1,15 @@
+diff -urN dc_gui-0.39.org/doc/C/Makefile.am dc_gui-0.39/doc/C/Makefile.am
+--- dc_gui-0.39.org/doc/C/Makefile.am	Sun Jan  6 12:52:22 2002
++++ dc_gui-0.39/doc/C/Makefile.am	Sun Jan  6 12:52:54 2002
+@@ -21,9 +21,9 @@
+ 	 -cp dc_gui.html $(distdir)
+ 
+ install-data-local:
+-	 $(mkinstalldirs) $(dc_gui_helpdir)/images
++	 $(mkinstalldirs) $(DESTDIR)$(dc_gui_helpdir)/images
+ 	 -for file in $(srcdir)/dc_gui/*.html $(srcdir)/dc_gui/*.css; do \
+ 	 basefile=`basename $$file`; \
+-	 $(INSTALL_DATA) $(srcdir)/$$file $(dc_gui_helpdir)/$$basefile; \
++	 $(INSTALL_DATA) $(srcdir)/$$file $(DESTDIR)$(dc_gui_helpdir)/$$basefile; \
+ 	 done
+ 
