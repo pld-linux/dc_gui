@@ -10,7 +10,7 @@
  Terminal=false
  Type=Application
 -Categories=Application;Network;
-+Categories=GTK;GNOME;Application;Network;
++Categories=GTK;GNOME;Network;FileTransfer;
 +Encoding=UTF-8
 +# vi: encoding=utf-8
  
