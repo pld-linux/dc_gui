@@ -4,7 +4,7 @@ Name:		dc_gui
 Version:	0.55
 Release:	1
 License:	GPL
-Group:		Applications/Communications
+Group:		X11/Applications/Networking
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 URL:		http://ac2i.tzo.com/dctc/
