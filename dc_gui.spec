@@ -10,7 +10,9 @@ Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 Requires:	dctc >= 0.58
 BuildRequires:	autoconf
 BuildRequires:	automake
-URL:		http://ac2i.tzo.com/dctc
+BuildRequires:	gnome-libs-devel
+BuildRequires:	gtk+-devel >= 1.2.0
+URL:		http://ac2i.tzo.com/dctc/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
