@@ -1,12 +1,12 @@
 Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.74
+Version:	0.75
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ac2i.tzo.com/dctc/%{name}2-%{version}.tar.gz
-# Source0-md5:	427356dc0e5f8cdcdbec06c06eecc6f6
+# Source0-md5:	fa2d1b6da9d82a66730cfabbb7668556
 Patch0:		%{name}-home_etc.patch
 URL:		http://ac2i.tzo.com/dctc/
 BuildRequires:	autoconf
