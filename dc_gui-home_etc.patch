@@ -14,24 +14,20 @@ diff -Nur dc_gui2-0.68.orig/src/callbacks.c dc_gui2-0.68.chng/src/callbacks.c
  	unlink(s->str);
  	g_string_free(s,TRUE);
  	fill_recent_hub_clist();
-diff -Nur dc_gui2-0.68.orig/src/main.c dc_gui2-0.68.chng/src/main.c
---- dc_gui2-0.68.orig/src/main.c	Sat Jan  4 08:25:04 2003
-+++ dc_gui2-0.68.chng/src/main.c	Wed Jan  8 13:50:39 2003
-@@ -410,9 +410,14 @@
-   textdomain (GETTEXT_PACKAGE);
- #endif
+diff -Nur dc_gui2-0.71.orig/src/main.c dc_gui2-0.71.chng/src/main.c
+--- dc_gui2-0.71.orig/src/main.c	Sun Mar  9 09:12:31 2003
++++ dc_gui2-0.71.chng/src/main.c	Wed Mar 19 09:21:11 2003
+@@ -414,7 +414,12 @@
  
--	path=getenv("HOME");
--	dctc_main_dir=g_string_new(NULL);
+ 	/* main dir= $HOME/.dctc */
+ 	dctc_main_dir=g_string_new(NULL);
 -	g_string_sprintf(dctc_main_dir,"%s/.dctc",(path!=NULL)?path:".");
-+	path = getenv("HOME");
-+	dctc_main_dir = g_string_new(NULL);
 +	if (getenv("CONFIG_DIR"))
 +		g_string_sprintf(dctc_main_dir, "%s/%s/dctc",
 +		    (path!=NULL)?path:".", getenv("CONFIG_DIR"));
 +	else
 +		g_string_sprintf(dctc_main_dir, "%s/.dctc", (path!=NULL)?path:".");
-+
++	
  	if(access(dctc_main_dir->str,R_OK|W_OK|X_OK))
  	{
  		if(errno==ENOENT)
