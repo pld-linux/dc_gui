@@ -1,0 +1,16 @@
+--- dc_gui2-0.80/dc_gui2.desktop~	Fri Jul 16 12:55:49 2004
++++ dc_gui2-0.80/dc_gui2.desktop	Fri Jul 16 12:55:49 2004
+@@ -1,9 +1,12 @@
+ [Desktop Entry]
+ Name=dc_gui2
+ Comment=Direct Connect for Linux
++Comment[pl]=Direct Connect dla Linuksa
+ Exec=dc_gui2
+ Icon=dc_gui2.xpm
+ Terminal=false
+ Type=Application
+-Categories=Application;Network;
++Categories=GTK;GNOME;Application;Network;
++Encoding=UTF-8
++# vi: encoding=utf-8
+ 
