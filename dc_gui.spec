@@ -7,7 +7,7 @@ Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
-Requires:	dctc >= 0.55
+Requires:	dctc >= 0.58
 BuildRequires:	autoconf
 BuildRequires:	automake
 URL:		http://ac2i.tzo.com/dctc
