@@ -7,7 +7,7 @@ License:	GPL
 Group:		Applications/Communications
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 URL:		http://ac2i.tzo.com/dctc/
-Requires:	dctc >= 0.72
+Requires:	dctc >= 0.73
 BuildRequires:	dctc
 BuildRequires:	autoconf
 BuildRequires:	automake
