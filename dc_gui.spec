@@ -61,3 +61,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc README ChangeLog TODO
 %attr(755,root,root) %{_bindir}/dc_gui
 %attr(644,root,root) %{_applnkdir}/Network/Communications/*
+%{_pixmapsdir}/dc_gui
