@@ -1,13 +1,14 @@
 Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.66
+Version:	0.68
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
+Source0:	http://ac2i.tzo.com/dctc/%{name}2-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-SORT_VARS.patch
 URL:		http://ac2i.tzo.com/dctc/
 BuildRequires:	db3-devel
 BuildRequires:	dctc >= 0.83.7
@@ -15,7 +16,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-libs-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+-devel >= 1.2.0
+BuildRequires:	gtk+2-devel
 BuildRequires:	imlib-devel
 Requires:	dctc >= 0.83.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,8 +31,9 @@ Direct Connect client (dctc) GUI.
 Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 
 %prep
-%setup -q
+%setup -q -n %{name}2-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
@@ -51,14 +53,14 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 
-%find_lang %{name} --with-gnome
+%find_lang %{name}2 --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.lang
+%files -f %{name}2.lang
 %defattr(644,root,root,755)
 %doc README ChangeLog TODO
-%attr(755,root,root) %{_bindir}/dc_gui
+%attr(755,root,root) %{_bindir}/dc_gui2
 %attr(644,root,root) %{_applnkdir}/Network/Communications/*
-%{_pixmapsdir}/dc_gui
+%{_pixmapsdir}/dc_gui2
