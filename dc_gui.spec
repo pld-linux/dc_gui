@@ -1,7 +1,7 @@
-Summary:	GUI for dctc
-Summary(pl):	GUI do dctc
+Summary:	GUI for dctc (Direct Connect)
+Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.34
+Version:	0.36
 Release:	1
 License:	GPL
 Group:		Applications/Communications
@@ -9,7 +9,7 @@ Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 URL:		http://ac2i.tzo.com/dctc/
-Requires:	dctc >= 0.60
+Requires:	dctc >= 0.62
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-libs-devel
@@ -19,25 +19,29 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_prefix		/usr/X11R6
 
 %description
-dctc GUI.
+Direct Connect client (dctc) GUI.
 
 %description -l pl
-Graficzny interfejs u¿ytkownika do dctc.
+Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 
 %prep
 %setup -q
 
 %build
+rm -f missing
+aclocal -I %{_aclocaldir}/gnome
 autoconf
+automake -a -c
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf README COPYING ChangeLog INSTALL ABOUT-NLS
+gzip -9nf README ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
