@@ -1,7 +1,7 @@
 Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.73
+Version:	0.74
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
@@ -16,6 +16,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libgnomeui-devel
+BuildRequires:  alsa-lib-devel
 Requires:	dctc >= 0.85.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
