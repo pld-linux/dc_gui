@@ -1,7 +1,7 @@
 Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.48
+Version:	0.49
 Release:	1
 License:	GPL
 Group:		Applications/Communications
@@ -33,18 +33,18 @@ rm -f missing
 gettextize --copy --force
 aclocal -I %{_aclocaldir}/gnome
 autoconf
-automake -a -c
+automake -a -c -f
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/Misc/
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 
 gzip -9nf README ChangeLog
 
@@ -57,4 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) %{_bindir}/dc_gui
-%attr(644,root,root) %{_applnkdir}/Network/Misc/*
+%attr(644,root,root) %{_applnkdir}/Network/Communications/*
