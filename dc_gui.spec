@@ -5,8 +5,6 @@ Version:	0.45
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Group(de):	Applikationen/Kommunikation
-Group(pl):	Aplikacje/Komunikacja
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
 URL:		http://ac2i.tzo.com/dctc/
 Requires:	dctc >= 0.69
