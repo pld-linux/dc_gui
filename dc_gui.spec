@@ -1,8 +1,8 @@
 Summary:	GUI for dctc (Direct Connect)
 Summary(pl):	GUI do dctc (Direct Connect)
 Name:		dc_gui
-Version:	0.69
-Release:	1.1
+Version:	0.71
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://ac2i.tzo.com/dctc/%{name}2-%{version}.tar.gz
@@ -10,7 +10,7 @@ Source1:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
 URL:		http://ac2i.tzo.com/dctc/
 BuildRequires:	db-devel
-BuildRequires:	dctc >= 0.83.7
+BuildRequires:	dctc >= 0.85.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-libs-devel
@@ -18,7 +18,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	imlib-devel
 BuildRequires:	libgnomeui-devel
-Requires:	dctc >= 0.83.7
+Requires:	dctc >= 0.85.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,11 +29,12 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 
 %prep
 %setup -q -n %{name}2-%{version}
-%patch0 -p1
+#%patch0 -p1 - TODO: update
 
 %build
 rm -f missing
-%{__gettextize}
+glib-gettextize --copy --force
+intltoolize --copy --force
 %{__aclocal} -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
@@ -57,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}2.lang
 %defattr(644,root,root,755)
 %doc README ChangeLog TODO
-%attr(755,root,root) %{_bindir}/dc_gui2
+%attr(755,root,root) %{_bindir}/*
 %attr(644,root,root) %{_applnkdir}/Network/Communications/*
 %{_pixmapsdir}/dc_gui2
 %{_datadir}/gnome/help/dc_gui/C
