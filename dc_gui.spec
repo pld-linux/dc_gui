@@ -7,7 +7,9 @@ Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	%{name}-%{version}.tar.gz
-Requires:	dctc
+Requires:	dctc >= 0.98
+BuildRequires:	autoconf
+BuildRequires:	automake
 URL:		http://ac2i.tzo.com/dcdt
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -20,7 +22,8 @@ dctc GUI
 %setup -q
 
 %build
-%configure2_13
+autoconf
+%configure
 %{__make}
 
 %install
