@@ -9,14 +9,14 @@ Source0:	http://ac2i.tzo.com/dctc/%{name}2-%{version}.tar.gz
 # Source0-md5:	427356dc0e5f8cdcdbec06c06eecc6f6
 Patch0:		%{name}-home_etc.patch
 URL:		http://ac2i.tzo.com/dctc/
-BuildRequires:	db-devel
-BuildRequires:	dctc >= 0.85.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	db-devel
+BuildRequires:	dctc >= 0.85.0
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel
+BuildRequires:	intltool
 BuildRequires:	libgnomeui-devel
-BuildRequires:  alsa-lib-devel
 Requires:	dctc >= 0.85.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,16 +46,17 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name}2 --with-gnome
+# dc_gui2.mo, but gnome/help/dc_gui
+
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}2.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc README ChangeLog TODO
 %attr(755,root,root) %{_bindir}/*
 %{_desktopdir}/*
 %{_pixmapsdir}/dc_gui2
 %{_pixmapsdir}/dc_gui2.xpm
-%{_datadir}/gnome/help/dc_gui
