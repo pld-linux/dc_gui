@@ -36,7 +36,7 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 %build
 rm -f missing
 %{__gettextize}
-aclocal -I %{_aclocaldir}/gnome
+%{__aclocal} -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
 %configure
