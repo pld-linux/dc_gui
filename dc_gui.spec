@@ -14,7 +14,7 @@ BuildRequires:	automake
 BuildRequires:	db-devel
 BuildRequires:	dctc >= 0.85.0
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+2-devel >= 2.2
 BuildRequires:	intltool
 BuildRequires:	libgnomeui-devel
 Requires:	dctc >= 0.85.0
