@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=DC_gui
 Comment=Direct Connect client (dctc) GUI
-Comment[pl]=Graficzny interfejs u¿ytkownika do dctc (Direct Connect)
+Comment[pl]=Graficzny interfejs użytkownika do dctc (Direct Connect)
 Icon=dc_gui.png
 Exec=dc_gui
 Terminal=0
