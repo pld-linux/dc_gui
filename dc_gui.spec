@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ac2i.tzo.com/dctc/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
 URL:		http://ac2i.tzo.com/dctc/
 Requires:	dctc >= 0.74
 BuildRequires:	dctc
@@ -38,9 +39,12 @@ automake -a -c
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/Misc
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/Misc/
 
 gzip -9nf README ChangeLog
 
@@ -53,3 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) %{_bindir}/dc_gui
+%attr(644,root,root) %{_applnkdir}/Network/Misc/*
