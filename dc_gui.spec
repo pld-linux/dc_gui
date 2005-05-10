@@ -36,6 +36,7 @@ Graficzny interfejs u¿ytkownika do dctc (Direct Connect).
 rm -f missing
 glib-gettextize --copy --force
 intltoolize --copy --force
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
