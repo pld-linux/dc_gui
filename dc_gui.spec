@@ -1,5 +1,5 @@
 Summary:	GUI for dctc (Direct Connect)
-Summary(pl.UTF-8):   GUI do dctc (Direct Connect)
+Summary(pl.UTF-8):	GUI do dctc (Direct Connect)
 Name:		dc_gui
 Version:	0.80
 Release:	6
