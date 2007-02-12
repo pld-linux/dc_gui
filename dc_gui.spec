@@ -1,5 +1,5 @@
 Summary:	GUI for dctc (Direct Connect)
-Summary(pl):	GUI do dctc (Direct Connect)
+Summary(pl.UTF-8):   GUI do dctc (Direct Connect)
 Name:		dc_gui
 Version:	0.80
 Release:	6
@@ -24,8 +24,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Direct Connect client (dctc) GUI.
 
-%description -l pl
-Graficzny interfejs uøytkownika do dctc (Direct Connect).
+%description -l pl.UTF-8
+Graficzny interfejs u≈ºytkownika do dctc (Direct Connect).
 
 %prep
 %setup -q -n %{name}2-%{version}
